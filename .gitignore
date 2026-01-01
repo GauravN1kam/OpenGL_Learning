@@ -1,3 +1,11 @@
-./build/*
+# Build artifacts
+build/
+
+# Cache directories
 .cache/
+
+# OS / editor junk (optional but recommended)
+.DS_Store
+.vscode/
+.idea/
 
