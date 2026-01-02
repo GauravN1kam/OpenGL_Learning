@@ -26,6 +26,11 @@ int main() {
   unsigned int shader =
       make_shader("../shaders/vertex.txt", "../shaders/fragment.txt");
 
+  // Used to offset the View
+  // int w, h;
+  // glfwGetFramebufferSize(window, &w, &h);
+  // glViewport(100, 100, 200, 200);
+
   TriangleMesh *triangle = new TriangleMesh();
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
