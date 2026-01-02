@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/gauravnikam/Code/cpp/Opengl/helloWIndow
+CMAKE_SOURCE_DIR = /Users/gauravnikam/Code/cpp/Opengl/Projects
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/gauravnikam/Code/cpp/Opengl/helloWIndow/build
+CMAKE_BINARY_DIR = /Users/gauravnikam/Code/cpp/Opengl/Projects/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,16 +87,16 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/gauravnikam/Code/cpp/Opengl/helloWIndow/build/CMakeFiles /Users/gauravnikam/Code/cpp/Opengl/helloWIndow/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/gauravnikam/Code/cpp/Opengl/Projects/build/CMakeFiles /Users/gauravnikam/Code/cpp/Opengl/Projects/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/gauravnikam/Code/cpp/Opengl/helloWIndow/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/gauravnikam/Code/cpp/Opengl/Projects/build/CMakeFiles 0
 .PHONY : all
 
 # The main codegen target
 codegen: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/gauravnikam/Code/cpp/Opengl/helloWIndow/build/CMakeFiles /Users/gauravnikam/Code/cpp/Opengl/helloWIndow/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/gauravnikam/Code/cpp/Opengl/Projects/build/CMakeFiles /Users/gauravnikam/Code/cpp/Opengl/Projects/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 codegen
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/gauravnikam/Code/cpp/Opengl/helloWIndow/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/gauravnikam/Code/cpp/Opengl/Projects/build/CMakeFiles 0
 .PHONY : codegen
 
 # The main clean target
@@ -124,48 +124,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hello_window
+# Target rules for targets named Projects
 
 # Build rule for target.
-hello_window: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello_window
-.PHONY : hello_window
+Projects: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Projects
+.PHONY : Projects
 
 # fast build rule for target.
-hello_window/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/build
-.PHONY : hello_window/fast
+Projects/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/build
+.PHONY : Projects/fast
 
-src/glad.o: src/glad.c.o
-.PHONY : src/glad.o
+dependencies/glad/src/glad.o: dependencies/glad/src/glad.c.o
+.PHONY : dependencies/glad/src/glad.o
 
 # target to build an object file
-src/glad.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/glad.c.o
-.PHONY : src/glad.c.o
+dependencies/glad/src/glad.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/dependencies/glad/src/glad.c.o
+.PHONY : dependencies/glad/src/glad.c.o
 
-src/glad.i: src/glad.c.i
-.PHONY : src/glad.i
+dependencies/glad/src/glad.i: dependencies/glad/src/glad.c.i
+.PHONY : dependencies/glad/src/glad.i
 
 # target to preprocess a source file
-src/glad.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/glad.c.i
-.PHONY : src/glad.c.i
+dependencies/glad/src/glad.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/dependencies/glad/src/glad.c.i
+.PHONY : dependencies/glad/src/glad.c.i
 
-src/glad.s: src/glad.c.s
-.PHONY : src/glad.s
+dependencies/glad/src/glad.s: dependencies/glad/src/glad.c.s
+.PHONY : dependencies/glad/src/glad.s
 
 # target to generate assembly for a file
-src/glad.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/glad.c.s
-.PHONY : src/glad.c.s
+dependencies/glad/src/glad.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/dependencies/glad/src/glad.c.s
+.PHONY : dependencies/glad/src/glad.c.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -173,7 +173,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -181,7 +181,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/triangle_mesh.o: src/triangle_mesh.cpp.o
@@ -189,7 +189,7 @@ src/triangle_mesh.o: src/triangle_mesh.cpp.o
 
 # target to build an object file
 src/triangle_mesh.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/triangle_mesh.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/src/triangle_mesh.cpp.o
 .PHONY : src/triangle_mesh.cpp.o
 
 src/triangle_mesh.i: src/triangle_mesh.cpp.i
@@ -197,7 +197,7 @@ src/triangle_mesh.i: src/triangle_mesh.cpp.i
 
 # target to preprocess a source file
 src/triangle_mesh.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/triangle_mesh.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/src/triangle_mesh.cpp.i
 .PHONY : src/triangle_mesh.cpp.i
 
 src/triangle_mesh.s: src/triangle_mesh.cpp.s
@@ -205,7 +205,7 @@ src/triangle_mesh.s: src/triangle_mesh.cpp.s
 
 # target to generate assembly for a file
 src/triangle_mesh.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_window.dir/build.make CMakeFiles/hello_window.dir/src/triangle_mesh.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projects.dir/build.make CMakeFiles/Projects.dir/src/triangle_mesh.cpp.s
 .PHONY : src/triangle_mesh.cpp.s
 
 # Help Target
@@ -217,10 +217,10 @@ help:
 	@echo "... codegen"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... hello_window"
-	@echo "... src/glad.o"
-	@echo "... src/glad.i"
-	@echo "... src/glad.s"
+	@echo "... Projects"
+	@echo "... dependencies/glad/src/glad.o"
+	@echo "... dependencies/glad/src/glad.i"
+	@echo "... dependencies/glad/src/glad.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -1,20 +1,21 @@
 cmake_minimum_required(VERSION 4.0.1)
-project(hello_window VERSION 1.0.0)
-
+project(Projects VERSION 1.0.0 LANGUAGES C CXX)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 
 add_executable(
-	hello_window 
-	src/config.h 
-	src/main.cpp
-	src/glad.c
-	src/triangle_mesh.h
-	src/triangle_mesh.cpp
+    Projects
+    src/main.cpp
+    src/triangle_mesh.cpp
+    dependencies/glad/src/glad.c
 )
 
-target_include_directories(hello_window PRIVATE dependencies)
+target_include_directories(Projects PRIVATE
+    dependencies/glad/include
+)
 
-target_link_libraries(hello_window glfw OpenGL::GL)
-
-
+target_link_libraries(Projects PRIVATE
+    glfw
+    OpenGL::GL
+)
