@@ -1,3 +1,0 @@
-/Users/gauravnikam/Code/cpp/Opengl/Projects/build/CMakeFiles/Projects.dir
-/Users/gauravnikam/Code/cpp/Opengl/Projects/build/CMakeFiles/edit_cache.dir
-/Users/gauravnikam/Code/cpp/Opengl/Projects/build/CMakeFiles/rebuild_cache.dir
