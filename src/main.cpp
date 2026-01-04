@@ -1,99 +1,70 @@
 #include "config.h"
-#include "triangle_mesh.h"
-unsigned int make_module(const std::string &filepath, unsigned int module_type);
-unsigned int make_shader(const std::string &vertex_filepath,
-                         const std::string &fragment_filepath);
+#include <OpenGL/gl.h>
+#include <cmath>
+
+void DrawCirlce(float red, float green, float blue) {
+  const int steps = 100;
+
+  float xPrev = 0.f;
+  float yPrev = 1.f;
+  float radius = 1.f;
+  const float angle = 3.1415 * 2 / steps;
+
+  for (int i = 0; i <= steps; i++) {
+    float newX = radius * sin(angle * i);
+    float newY = -radius * cos(angle * i);
+
+    glColor3f(red, green, blue);
+    glBegin(GL_TRIANGLES);
+    glVertex3f(0.f, 0.f, 0.f);
+    glVertex3f(newX, newY, 0.f);
+    glVertex3f(xPrev, yPrev, 0.f);
+    glEnd();
+
+    xPrev = newX;
+    yPrev = newY;
+  }
+}
+
 int main() {
   GLFWwindow *window;
 
   if (!glfwInit()) {
     return -1;
   }
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-  window = glfwCreateWindow(640, 480, "First Window", NULL, NULL);
+  window = glfwCreateWindow(800, 800, "First Window", NULL, NULL);
 
   glfwMakeContextCurrent(window);
+  glMatrixMode(GL_MODELVIEW);
+  glScalef(0.1f, 0.1f, 1);
 
-  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-    glfwTerminate();
-    return -1;
-  }
-  glClearColor(0.25f, 0.50f, 0.75f, 1.0f);
-
-  unsigned int shader =
-      make_shader("../shaders/vertex.txt", "../shaders/fragment.txt");
-
-  TriangleMesh *triangle = new TriangleMesh();
+  float angle = 0;
+  float angleMoon = 0.f;
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     glClear(GL_COLOR_BUFFER_BIT);
-    glUseProgram(shader);
-    triangle->draw();
+
+    angle += 1.0;
+    DrawCirlce(1, 1, 0);
+    {
+      glPushMatrix();
+      glRotatef(angle, 0, 0, 1);
+      glTranslatef(0, 5, 0);
+      glScalef(0.6f, 0.6f, 1.f);
+      DrawCirlce(0, 0.3f, 1.0f);
+      {
+        glPushMatrix();
+        glRotatef(angleMoon, 0, 0, 1);
+        glTranslatef(0, 3.f, 0);
+        glScalef(0.6, 0.6, 0);
+        DrawCirlce(0.4, 0.4, 0.4);
+        glPopMatrix();
+
+        angleMoon += 1.8f;
+      }
+      glPopMatrix();
+    }
+
     glfwSwapBuffers(window);
   }
-  glDeleteShader(shader);
-  glfwTerminate();
-}
-
-unsigned int make_module(const std::string &filepath,
-                         unsigned int module_type) {
-  std::ifstream file;
-  std::stringstream buffereLines;
-  std::string line;
-
-  file.open(filepath);
-
-  while (std::getline(file, line)) {
-    buffereLines << line << "\n";
-  }
-  std::string shaderSource = buffereLines.str();
-  const char *shaderSrc = shaderSource.c_str();
-  buffereLines.str("");
-  file.close();
-
-  unsigned int shaderModule = glCreateShader(module_type);
-  glShaderSource(shaderModule, 1, &shaderSrc, NULL);
-  glCompileShader(shaderModule);
-
-  int sucess;
-  glGetShaderiv(shaderModule, GL_COMPILE_STATUS, &sucess);
-
-  if (!sucess) {
-    char errorLog[1024];
-
-    glGetShaderInfoLog(shaderModule, 1024, NULL, errorLog);
-
-    std::cout << "Shader Module compilation error: \n" << errorLog << std::endl;
-  }
-  return shaderModule;
-}
-
-unsigned int make_shader(const std::string &vertex_filepath,
-                         const std::string &fragment_filepath) {
-  std::vector<unsigned int> modules;
-  modules.push_back(make_module(vertex_filepath, GL_VERTEX_SHADER));
-  modules.push_back(make_module(fragment_filepath, GL_FRAGMENT_SHADER));
-
-  unsigned int shader = glCreateProgram();
-  for (unsigned int shaderModule : modules) {
-    glAttachShader(shader, shaderModule);
-  }
-  glLinkProgram(shader);
-
-  int sucess;
-  glGetProgramiv(shader, GL_LINK_STATUS, &sucess);
-  if (!sucess) {
-    char errorLog[1024];
-
-    glGetProgramInfoLog(shader, 1024, NULL, errorLog);
-
-    std::cout << "Shader Linking error: \n" << errorLog << std::endl;
-  }
-  for (unsigned int shaderModule : modules) {
-    glDeleteShader(shaderModule);
-  }
-  return shader;
 }
