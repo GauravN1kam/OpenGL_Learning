@@ -1,6 +1,23 @@
 #include "config.h"
-#include <OpenGL/gl.h>
 #include <cmath>
+
+void CreateSinWave() {
+  float offsets[100];
+  offsets[0] = 0.0f;
+  for (int i = 1; i < 100; i++) {
+    offsets[i] = offsets[i - 1] + 0.01;
+  }
+  float Xoffsets[100];
+  Xoffsets[0] = 0.0f;
+  for (int i = 1; i < 100; i++) {
+    Xoffsets[i] = Xoffsets[i - 1] + 0.01;
+  }
+  glBegin(GL_POINTS);
+  for (int i = 0; i < 100; i++) {
+  }
+
+  glEnd();
+}
 
 int main() {
   GLFWwindow *window;
@@ -11,24 +28,30 @@ int main() {
   window = glfwCreateWindow(800, 800, "First Window", NULL, NULL);
   glfwMakeContextCurrent(window);
 
+  float offsets[100];
+  offsets[0] = -.7f;
+  float Xoffsets[100];
+  Xoffsets[0] = -0.5f;
   while (!glfwWindowShouldClose(window)) {
+    glClear(GL_COLOR_BUFFER_BIT);
     glfwPollEvents();
-    glPointSize(0.5f);
-    float xVal = 0.01;
-    float yVal = 0;
-    glColor3f(0.5f, 0.5f, 0.5f);
+    glColor3f(1.f, 1.f, 1.f);
+
+    for (int i = 1; i < 100; i++) {
+      offsets[i] = offsets[i - 1] + 0.1;
+    }
+    for (int i = 1; i < 100; i++) {
+      Xoffsets[i] = Xoffsets[i - 1] + 0.01;
+    }
+
     glPointSize(2.0f);
     glBegin(GL_POINTS);
 
-    float x = 0.0f;
-    for (int i = 0; i < 1000; i++) {
-      float y = sin(x);
-      glVertex2f(x, y);
-      x += 0.01f;
+    for (int i = 0; i < 100; i++) {
+      glVertex3f(Xoffsets[i], 0.5 * sin(offsets[i]), 0);
     }
-
     glEnd();
-    glClear(GL_COLOR_BUFFER_BIT);
+
     glfwSwapBuffers(window);
   }
 }
