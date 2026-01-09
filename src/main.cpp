@@ -56,12 +56,20 @@ int main() {
     }
     glEnd();
 
+    glBegin(GL_POINTS);
+
+    for (int i = 0; i < 1000; i++) {
+      glVertex3f(Xoffsets[i], 0.5 * cos(offsets[i]), 0);
+    }
+    glEnd();
     glColor3f(1, 0, 0);
     glBegin(GL_LINES);
     glVertex3f(-1, 0, 0);
     glVertex3f(1, 0, 0);
     glVertex3f(0, -1, 0);
     glVertex3f(0, 1, 0);
+    glVertex3f(0, 0, -1);
+    glVertex3f(0, 0, 1);
     glEnd();
 
     glfwSwapBuffers(window);
